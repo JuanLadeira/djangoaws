@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .forms import UserCreationForm
+
 
 # Create your views here.
 def index(request):
@@ -7,7 +9,8 @@ def index(request):
 
 
 def register(request):
-    return render(request, 'example/register.html', {})
+    form = UserCreationForm
+    return render(request, 'example/register.html', {'form': form})
 
 def my_login(request):
     return render(request, 'example/mylogin.html', {})
