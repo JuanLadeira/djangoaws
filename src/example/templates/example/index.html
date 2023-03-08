@@ -1,10 +1,11 @@
 {% load static %}
 
+
 <html>
 
 <head>
 
-  <title> Homepage </title>
+  <title>{%block title %} Homepage {% endblock %}</title>
 
   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css" />
 
@@ -14,67 +15,16 @@
 </head>
 
 
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-
-  <a class="navbar-brand main-heading">
-
-    &nbsp; Homepage
-
-  </a>
-
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-
-  </button>
-
-
-  <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-
-
-    <ul class="navbar-nav ms-auto">
-
-
-      &nbsp; &nbsp; &nbsp;
-
-
-      <li class="nav-item">
-
-        <a class="btn btn-primary navbar-btn" type="button" href="">Register</a>
-
-      </li>
-
-
-      &nbsp; &nbsp; &nbsp;
-
-
-      <li class="nav-item">
-
-        <a class="btn btn-primary navbar-btn" type="button" href="  ">Login</a>
-
-      </li>
-
-
-      &nbsp; &nbsp; &nbsp;
-
-
-    </ul>
-
-
-  </div>
-
-
-</nav>
-
-
-
-<br>
-
-
 <body>
+  {% include 'example/components/navbar.html' %}
+
+
+  {% block content %}
+
+  <br>
+
+
+
 
   <br>
   <br>
@@ -86,14 +36,14 @@
     <br>
 
 
-    <a class="btn btn-outline-primary" type="button" href="">Register</a>
+    <a class="btn btn-outline-primary" type="button" href="{% url 'example:register' %}">Register</a>
 
 
   </div>
 
 
 </body>
-
+{% endblock content %}
 
 
 

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
-from .forms import UserCreationForm
+from .forms import CreateUserForm
+from .models import Profile
 
 
 # Create your views here.
@@ -9,7 +10,14 @@ def index(request):
 
 
 def register(request):
-    form = UserCreationForm
+    form = CreateUserForm()
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            current_user = form.save(commit=False)
+            form.save()
+            profile = Profile.objects.create(user=current_user)
+            return redirect('my-login')
     return render(request, 'example/register.html', {'form': form})
 
 def my_login(request):
