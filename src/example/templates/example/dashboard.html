@@ -6,5 +6,16 @@ Dashboard
 
 
 {% block content %}
-Dashboard
+<br>
+<div class="container bg-white shaddow-md p-5 form-layout">
+    <h1>Dashboard</h1>
+    <hr>
+    <br>
+    <a href="{% url 'example:user-logout' %}"> Logout </a>
+    <br>
+    <a href="{% url 'example:profile-management' %}"> Profile-management </a>
+
+
+</div>
+
 {% endblock content %}
