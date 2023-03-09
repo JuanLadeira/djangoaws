@@ -9,7 +9,7 @@ from .models import Profile
 
 # Create your views here.
 def index(request):
-    return render(request, 'example/index.html', {})
+    return render(request, 'example/homepage.html', {})
 
 
 def register(request):
