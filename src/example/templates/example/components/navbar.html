@@ -22,7 +22,7 @@
 
             &nbsp; &nbsp; &nbsp;
 
-
+            {% if not user.is_authenticated %}
             <li class="nav-item">
 
                 <a class="btn btn-primary navbar-btn" type="button" href="{% url 'example:register' %}">Register</a>
@@ -41,6 +41,11 @@
 
 
             &nbsp; &nbsp; &nbsp;
+            {% else %}
+            <li class="nav-item me-3">
+                <a class="btn btn-primary navbar-btn" type="button" href="{% url 'example:user-logout' %}">Logout</a>
+            </li>
+            {% endif %}
 
 
         </ul>
