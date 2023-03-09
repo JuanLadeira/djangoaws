@@ -4,62 +4,21 @@
 <html>
 
 <head>
-
   <title>{%block title %} Homepage {% endblock %}</title>
 
   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css" />
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
-
-
 </head>
-
 
 <body>
   {% include 'example/components/navbar.html' %}
-
-
   {% block content %}
-
-  <br>
-
-
-
-
-  <br>
-  <br>
-
-  <div class="text-center">
-
-    <h2> This.... is The best website out there! </h2>
-
-    <br>
-
-
-    <a class="btn btn-outline-primary" type="button" href="{% url 'example:register' %}">Register</a>
-
-
-  </div>
-
-
-</body>
-{% endblock content %}
-
-
-
-<script src="{% static 'js/app.js' %}"></script>
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-
-</script>
-
-
+  {% endblock content %}
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
 
 </html>
