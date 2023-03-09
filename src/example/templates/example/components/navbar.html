@@ -43,6 +43,10 @@
             &nbsp; &nbsp; &nbsp;
             {% else %}
             <li class="nav-item me-3">
+                <a class="btn navbar-btn" type="button" href="{% url 'example:dashboard' %}">Dashboard</a>
+            </li>
+
+            <li class="nav-item me-3">
                 <a class="btn btn-primary navbar-btn" type="button" href="{% url 'example:user-logout' %}">Logout</a>
             </li>
             {% endif %}
