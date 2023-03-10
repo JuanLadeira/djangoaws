@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 from django.shortcuts import redirect, render
 
-from .forms import CreateUserForm, LoginForm, UpdateUserForm
+from .forms import CreateUserForm, LoginForm, UpdateProfileForm, UpdateUserForm
 from .models import Profile
 
 
@@ -36,18 +36,26 @@ def my_login(request):
     return render(request, 'example/mylogin.html', {'form': form})
 @login_required(login_url="example:my-login")
 def my_dashboard(request):
-    return render(request, 'example/dashboard.html', {})
+    profile_pic = Profile.objects.get(user=request.user)
+    return render(request, 'example/dashboard.html', {'profilePicture': profile_pic})
 
 @login_required(login_url="example:my-login")
 def profile_management(request):
     form = UpdateUserForm(instance=request.user)
+    profile = Profile.objects.get(user=request.user)
+    profile_form = UpdateProfileForm(instance=profile)
+
     if request.method == 'POST':
         form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return redirect('example:dashboard')
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('example:dashboard')
 
-    return render(request, 'example/profile-management.html', {'form': form})
+    return render(request, 'example/profile-management.html', {'form': form, 'profile_form': profile_form, 'profile':profile})
 
 def user_logout(request):
     auth.logout(request)
@@ -61,3 +69,6 @@ def delete_conta(request):
         return redirect("example:homepage")
     
     return render(request, "example/deleteconta.html", {})
+
+
+    
