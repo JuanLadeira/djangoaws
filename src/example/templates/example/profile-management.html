@@ -17,6 +17,19 @@ profile management
         <input value="submit" type="submit" class="btn btn-primary">
     </form>
 </div>
+<div class="container text-center bg-white shadow-md border border-3 form-layout mb-3 border-light p-5">
+    <h2 class="text-center">Upload your Profile Picture</h2>
+    <br>
+    <img style="width:100px" src="{{profile.profile_pic.url}}" alt="user_picture">
+    <br>
+    <br>
+    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{profile_form.profile_pic|as_crispy_field}}
+        <br>
+        <input value="Upload" type="submit" class="btn btn-primary">
+    </form>
+</div>
 <div class="container bg-white shadow-md border border-3 form-layout mb-3 border-light p-5">
     <a href="{% url 'example:delete-conta' %}">Delete account?</a>
 </div>
