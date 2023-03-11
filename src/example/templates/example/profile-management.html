@@ -7,14 +7,14 @@ profile management
 
 {% block content %}
 <div class="container bg-white shadow-md border border-3 form-layout mb-3 border-light p-5">
-    <h1 class="text-center">Profile Management</h1>
+    <h1 class="text-center">Update username and email</h1>
     <form method="POST" autocomplete="off">
         {% csrf_token %}
         {{form.username|as_crispy_field}}
         <br>
         {{form.email|as_crispy_field}}
         <br>
-        <input value="submit" type="submit" class="btn btn-primary">
+        <input value="Update" type="submit" class="btn btn-primary w-100">
     </form>
 </div>
 <div class="container text-center bg-white shadow-md border border-3 form-layout mb-3 border-light p-5">
@@ -27,10 +27,11 @@ profile management
         {% csrf_token %}
         {{profile_form.profile_pic|as_crispy_field}}
         <br>
-        <input value="Upload" type="submit" class="btn btn-primary">
+        <input value="Upload" type="submit" class="btn btn-primary w-100">
     </form>
 </div>
 <div class="container bg-white shadow-md border border-3 form-layout mb-3 border-light p-5">
+    <h3>Account Deletion</h3>
     <a href="{% url 'example:delete-conta' %}">Delete account?</a>
 </div>
 {% endblock content %}

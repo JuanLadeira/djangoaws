@@ -14,6 +14,8 @@ def index(request):
 
 def register(request):
     form = CreateUserForm()
+    if request.user.is_authenticated:
+        return redirect('example:dashboard')
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():

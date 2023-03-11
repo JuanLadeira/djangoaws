@@ -17,8 +17,10 @@ My login
         <br>
         {{form.password|as_crispy_field}}
         <br>
-        <input value="submit" type="submit" class="btn btn-primary">
+        <input value="login" type="submit" class="btn btn-primary w-100">
     </form>
+    <br>
+    <p>Dont you have an account?</p> <a href="{% url 'example:register' %}">Register your account.</a>
 </div>
 
 {% endblock content %}
