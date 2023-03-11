@@ -14,14 +14,9 @@ Dashboard
     <div class="row">
         <h6 class="text-muted">&nbsp; &nbsp; &nbsp;Welcome {{user}}.</h6>
         <div class="col-3 text-center"><img style="width:100px" src="{{profilePicture.profile_pic.url}}"></div>
-        <div class="col-9">
-            <br>
-            <a href="{% url 'example:user-logout' %}"> Logout </a>
-            <br>
-            <a href="{% url 'example:profile-management' %}"> Profile-management </a>
-        </div>
     </div>
-    <hr>
+</div>
+<hr>
 </div>
 
 {% endblock content %}

@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
 
 
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ml-auto">
 
 
             &nbsp; &nbsp; &nbsp;
@@ -25,7 +25,7 @@
             {% if not user.is_authenticated %}
             <li class="nav-item">
 
-                <a class="btn btn-primary navbar-btn" type="button" href="{% url 'example:register' %}">Register</a>
+                <a href="{% url 'example:register' %}">Register</a>
 
             </li>
 
@@ -35,7 +35,7 @@
 
             <li class="nav-item">
 
-                <a class="btn btn-primary navbar-btn" type="button" href="{% url 'example:my-login' %}">Login</a>
+                <a href="{% url 'example:my-login' %}">Login</a>
 
             </li>
 
@@ -43,11 +43,15 @@
             &nbsp; &nbsp; &nbsp;
             {% else %}
             <li class="nav-item me-3">
-                <a class="btn navbar-btn" type="button" href="{% url 'example:dashboard' %}">Dashboard</a>
+                <a href="{% url 'example:dashboard' %}">Dashboard</a>
             </li>
 
             <li class="nav-item me-3">
-                <a class="btn btn-primary navbar-btn" type="button" href="{% url 'example:user-logout' %}">Logout</a>
+                <a href="{% url 'example:profile-management' %}">Profile Management</a>
+            </li>
+
+            <li class="nav-item me-3">
+                <a href="{% url 'example:user-logout' %}">Logout</a>
             </li>
             {% endif %}
 
