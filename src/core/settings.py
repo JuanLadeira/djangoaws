@@ -72,12 +72,23 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'mydatabase',
+#     }
+# }
+
+
 DATABASES = {
-    'default': config(
-        'DATABASE_URL',
-        default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
-        cast=db_url
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config("postgresdb_name"),
+        'USER': config("postgresdb_user"),
+        'PASSWORD': config("postgresdb_password"),
+        'HOST': config("postgresdb_host"),
+        'PORT': config("postgresdb_port"),
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -110,9 +121,9 @@ STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [ BASE_DIR /'static']
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "images/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'static/images'
 
 
 
@@ -123,7 +134,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 #AWSCONFIGURATION
-AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 
 #AWS S3 CONFIGURATION
+
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE= 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE=False
