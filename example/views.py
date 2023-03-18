@@ -18,8 +18,10 @@ def register(request):
         return redirect('example:dashboard')
     if request.method == "POST":
         form = CreateUserForm(request.POST)
-        if form.is_valid():
-            return redirect('example:my-login')
+        current_user = form.save(commit=False)
+        form.save()
+        profile = Profile.objects.create(user=current_user)
+        return redirect('example:my-login')
     return render(request, 'example/register.html', {'form': form})
 
 def my_login(request):

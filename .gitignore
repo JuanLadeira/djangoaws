@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .env
+.venv
 # C extensions
 *.so
 .vscode/
@@ -13,6 +14,12 @@ develop-eggs/
 dist/
 downloads/
 eggs/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
 .eggs/
 lib/
 lib64/
