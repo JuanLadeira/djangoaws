@@ -1,0 +1,26 @@
+version: 0.0
+Resources: 
+  - TargetService:
+      Type: AWS::ECS:Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:sa-east-1:840943737592:task-definition/MyFirstAppTask:1"
+        LoadBalancerInfo:
+          ContainerName: "MyfistContainerinAws"
+          ContainerPort: 8000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
